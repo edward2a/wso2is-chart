@@ -46,15 +46,15 @@ deployment:
 
   image:
     # -- Container image registry host name
-    registry: "docker.wso2.com"
+    registry: "registry.hub.docker.com"
     # -- Container image repository name
-    repository: "wso2is"
+    repository: "edward2a/wso2is"
     # -- Container image digest
     digest: ""
     # -- Container image tag. Either "tag" or "digest" should defined
     tag: "7.0.0"
     # -- Refer to the Kubernetes documentation on updating images (Ref: https://kubernetes.io/docs/concepts/containers/images/#updating-images)
-    pullPolicy: "Always"
+    pullPolicy: "IfNotPresent"
     # -- image pull secret name
     imagePullSecret: ""
   # -- Progress deadline seconds where the Deployment controller waits before indicating (in the Deployment status) that the Deployment progress has stalled.
