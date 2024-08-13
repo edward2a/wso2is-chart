@@ -155,11 +155,6 @@ deployment:
   persistence:
     # -- Enable persistence for artifact sharing
     enabled: false
-    subPaths:
-      # -- Azure storage account tenants file share path
-      tenants: "tenants"
-      # -- Azure storage account userstores file share path
-      userstores: "userstores"
     capacity: 100Gi
   secretStore:
     # -- Enable secure vault with secret store CSI driver

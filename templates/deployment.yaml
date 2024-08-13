@@ -216,10 +216,6 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: {{ template "..fullname" . }}
-            {{- if .Values.deployment.secretStore.azure.enabled  }}
-            nodePublishSecretRef:
-              name: {{ .Values.deployment.secretStore.azure.nodePublishSecretRef }}
-            {{- end }}
         {{- end }}
         - name: {{ template "..fullname" . }}-entrypoint
           configMap:
