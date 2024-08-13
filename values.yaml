@@ -15,11 +15,6 @@
 # under the License.
 
 wso2:
-  subscription:
-    # -- WSO2 account username
-    username: ""
-    # -- WSO2 account password
-    password: ""
 
 deployment:
   apparmor:
