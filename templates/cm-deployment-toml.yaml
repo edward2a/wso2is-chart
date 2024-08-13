@@ -14,7 +14,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-apiVersion: {{ .Values.k8sKindAPIVersions.configMap }}
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ template "..fullname" . }}-deployment-toml

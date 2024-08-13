@@ -16,7 +16,7 @@
 
 {{ $replicas:= int .Values.deployment.replicas }}
 {{- if gt $replicas 1 }}
-apiVersion: {{ .Values.k8sKindAPIVersions.podDisruptionBudget }}
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: {{ template "..fullname" . }}

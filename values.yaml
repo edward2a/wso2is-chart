@@ -418,30 +418,3 @@ deploymentToml:
     # [transport.https.properties]
     # proxyPort = 443
 # -- K8s API versions for K8s kinds
-k8sKindAPIVersions:
-  # -- K8s API version for kind Deployment
-  deployment: "apps/v1"
-  # -- K8s API version for kind ConfigMap
-  configMap: "v1"
-  # -- K8s API version for kind HorizontalPodAutoscaler
-  horizontalPodAutoscaler: "autoscaling/v1"
-  # -- K8s API version for kind Ingress
-  ingress: "networking.k8s.io/v1"
-  # -- K8s API version for kind PodDisruptionBudget
-  podDisruptionBudget: "policy/v1"
-  # -- K8s API version for kind PersistentVolumeClaim
-  persistentVolumeClaim: "v1"
-  # -- K8s API version for kind PersistentVolume
-  persistentVolume: "v1"
-  # -- K8s API version for kind ServiceAccount
-  serviceAccount: "v1"
-  # -- K8s API version for kind Role
-  role: "rbac.authorization.k8s.io/v1"
-  # -- K8s API version for kind RoleBinding
-  roleBinding: "rbac.authorization.k8s.io/v1"
-  # -- K8s API version for kind SecretProviderClass
-  secretProviderClass: "secrets-store.csi.x-k8s.io/v1"
-  # -- K8s API version for kind Secret
-  secret: "v1"
-  # -- K8s API version for kind Service
-  service: "v1"

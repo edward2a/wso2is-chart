@@ -16,7 +16,7 @@
 # under the License.
 
 {{- if .Values.deployment.persistence.azure.enabled }}
-apiVersion: {{ .Values.k8sKindAPIVersions.persistentVolume }}
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: {{ template "..fullname" . }}
