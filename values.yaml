@@ -160,39 +160,10 @@ deployment:
       tenants: "tenants"
       # -- Azure storage account userstores file share path
       userstores: "userstores"
-    azure:
-      # -- Enable persistence for artifact sharing using Azure file share
-      enabled: true
-      # -- Azure Storage Account credentials to access the file shares
-      # -- Ref: https://docs.microsoft.com/en-us/azure/aks/azure-files-volume#create-a-kubernetes-secret
-      # -- Names of Azure File shares for persisted data
-      fileShare: "is-share"
-      # -- K8s secret name for the Azure file share CI driver 
-      secretName: "azure-storage-csi"
-    # -- Define capacity for persistent runtime artifacts which are shared between instances of the Identity Server profile
     capacity: 100Gi
   secretStore:
     # -- Enable secure vault with secret store CSI driver
     enabled: false
-    azure:
-      # -- Enable Azure Key Vault integration.
-      enabled: true
-      keyVault:
-        # -- Name of the target Azure Key Vault instance
-        name: ""
-        # -- Subscription ID of the target Azure Key Vault
-        subscriptionId: ""
-        # -- Name of the Azure Resource Group to which the target Azure Key Vault belongs
-        resourceGroup: ""
-        # -- Service Principal created for transacting with the target Azure Key Vault
-        # Ref: https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/docs/service-principal-mode.md
-        servicePrincipalAppID: ""
-        # -- Azure Active Directory tenant ID of the target Key Vault
-        tenantId: ""
-        # -- Azure Key Vault secret name of the internal keystore password
-        secretName: "INTERNAL-KEYSTORE-PASSWORD-DECRYPTED"
-      # -- The name of the Kubernetes secret that contains the service principal credentials to access Azure Key Vault. Ref: https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/configurations/identity-access-modes/service-principal-mode/#configure-service-principal-to-access-keyvault
-      nodePublishSecretRef: "azure-kv-secret-store-sp"
 
 deploymentToml:
   server:
