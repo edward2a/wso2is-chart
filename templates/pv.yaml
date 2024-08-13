@@ -15,7 +15,6 @@
 # specific language governing permissions and limitations
 # under the License.
 
-{{- if .Values.deployment.persistence.azure.enabled }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -29,15 +28,10 @@ spec:
     storage: {{ .Values.deployment.persistence.capacity }}
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
-  azureFile:
-    secretName: {{ .Values.deployment.persistence.azure.secretName }}
-    secretNamespace: {{ .Release.Namespace }}
-    shareName: {{ .Values.deployment.persistence.azure.fileShare }}
   mountOptions:
     - dir_mode=0777
     - file_mode=0777
     - uid={{ .Values.deployment.securityContext.runAsUser }}
     - gid={{ .Values.deployment.securityContext.runAsUser }}
     - cache=strict
-{{- end }}
 {{- end }}
