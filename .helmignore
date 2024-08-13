@@ -23,3 +23,6 @@
 .vscode/
 *.md
 *.png
+
+# Original source
+src_original/*
