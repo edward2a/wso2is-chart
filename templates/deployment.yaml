@@ -40,12 +40,13 @@ spec:
         checksum.secret.properties: {{ include (print $.Template.BasePath "/cm-secret-config-properties.yaml") . | sha256sum }}
         {{- end }}
         checksum.log4j.properties: {{ include (print $.Template.BasePath "/cm-log4j2-properties.yaml") . | sha256sum }}
-        checksum.entrypoint.sh: {{ include (print $.Template.BasePath "/cm-entrypoint.yaml") . | sha256sum }}
         checksum.thrift-authentication.xml: {{ include (print $.Template.BasePath "/cm-thrift-authentication-xml.yaml") . | sha256sum }}
         container.apparmor.security.beta.kubernetes.io/wso2is: {{ .Values.deployment.apparmor.profile }}
     spec:
       securityContext:
         runAsUser: {{ .Values.deployment.securityContext.runAsUser }}
+        runAsGroup: {{ .Values.deployment.securityContext.runAsUser }}
+        fsGroup: {{ .Values.deployment.securityContext.runAsUser }}
         seccompProfile:
           type: {{ .Values.deployment.securityContext.seccompProfile.type }}
       terminationGracePeriodSeconds: {{ .Values.deployment.terminationGracePeriodSeconds }}
@@ -169,9 +170,6 @@ spec:
               mountPath: /mnt/secrets-store
               readOnly: true
             {{- end }}
-            - name: {{ template "..fullname" . }}-entrypoint
-              mountPath: /home/wso2carbon/docker-entrypoint.sh
-              subPath: docker-entrypoint.sh
             {{- if .Values.deployment.persistence.enabled }}
             - name: runtime-persistent-data-storage
               mountPath: /home/wso2carbon/{{ .Values.deployment.productPackName }}-{{ .Values.deployment.buildVersion }}/repository/tenants
@@ -217,10 +215,6 @@ spec:
             volumeAttributes:
               secretProviderClass: {{ template "..fullname" . }}
         {{- end }}
-        - name: {{ template "..fullname" . }}-entrypoint
-          configMap:
-            name: {{ template "..fullname" . }}-entrypoint
-            defaultMode: 0407
         {{- if .Values.deployment.persistence.enabled }}
         - name: runtime-persistent-data-storage
           persistentVolumeClaim:
