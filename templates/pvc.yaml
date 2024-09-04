@@ -26,5 +26,5 @@ spec:
   resources:
     requests:
       storage: {{ .Values.deployment.persistence.capacity }}
-  storageClassName: {{ .Values.deployment.presistence.storageClass }}
+  storageClassName: {{ .Values.deployment.persistence.storageClass }}
 {{- end }}
