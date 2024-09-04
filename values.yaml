@@ -17,17 +17,14 @@
 wso2:
 
 deployment:
+
   apparmor:
-    # -- Apparmor profile
     profile: "runtime/default"
+
   ingress:
-    # -- Host name of the Identity server as Key Manager
-    hostName: "wso2is.com"
-    # -- Ingress class name
+    hostName: "wso2is.local"
     ingressClassName: "nginx"
-    # -- K8s TLS secret for configured hostname
     tlsSecretsName: "is-tls"
-    # -- Enable Nginx rate limiting
     enableNginxRateLimit: false
     annotations:
       nginx.ingress.kubernetes.io/affinity: "cookie"
@@ -45,18 +42,13 @@ deployment:
       nginx.ingress.kubernetes.io/proxy-buffer-size: "64k"
 
   image:
-    # -- Container image registry host name
     registry: "registry.hub.docker.com"
-    # -- Container image repository name
     repository: "edward2a/wso2is"
-    # -- Container image digest
     digest: ""
-    # -- Container image tag. Either "tag" or "digest" should defined
     tag: "7.0.0"
-    # -- Refer to the Kubernetes documentation on updating images (Ref: https://kubernetes.io/docs/concepts/containers/images/#updating-images)
     pullPolicy: "IfNotPresent"
-    # -- image pull secret name
     imagePullSecret: ""
+
   # -- Progress deadline seconds where the Deployment controller waits before indicating (in the Deployment status) that the Deployment progress has stalled.
   progressDeadlineSeconds: 600
   # -- preStopHookWaitInSeconds waits before calling server stop in the pre stop hook.
@@ -156,6 +148,9 @@ deployment:
     # -- Enable persistence for artifact sharing
     enabled: false
     capacity: 100Gi
+    subPaths:
+      tenants: "tenants"
+    storageClass: ""
   secretStore:
     # -- Enable secure vault with secret store CSI driver
     enabled: false
