@@ -26,8 +26,5 @@ spec:
   resources:
     requests:
       storage: {{ .Values.deployment.persistence.capacity }}
-  selector:
-    matchLabels:
-      purpose: {{ template "..fullname" . }}-identity-server-persistence
-  storageClassName: ""
+  storageClassName: {{ .Values.deployment.presistence.storageClass }}
 {{- end }}
